@@ -24,7 +24,6 @@
   function clearFields() {
     document.getElementById('blogpost').value = '';
     document.getElementById('title').value = '';
-    document.getElementById('categories').value = '';
   }
 
   function auth (callback) {
@@ -78,7 +77,11 @@
             postToGithub(newToken);
           });
         } else {
+          window.lightbox("Posted!")
           clearFields();
+          setTimeout(function () {
+            window.removeLightbox()
+          }, 500);
         }
       };
       xmlhttp.send(JSON.stringify({
@@ -140,7 +143,7 @@
            'layout: post\n' +
            'title: ' + document.getElementById('title').value + '\n' +
            'date: ' + buildDate() + '\n' +
-           'categories: [' + document.getElementById('categories').value.split(' ').join(', ') + ']\n' +
+           'published: true\n' +
            '---\n';
   }
 
