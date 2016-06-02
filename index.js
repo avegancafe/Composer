@@ -81,7 +81,7 @@
           clearFields();
           setTimeout(function () {
             window.removeLightbox()
-          }, 500);
+          }, 3000);
         }
       };
       xmlhttp.send(JSON.stringify({
